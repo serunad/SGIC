@@ -77,3 +77,5 @@ class InMemoryDB:
         :Return Cliente object
         """
         return self._clientes_table.get(nit, None)
+    
+    # Consultas a la tabla de reservas
