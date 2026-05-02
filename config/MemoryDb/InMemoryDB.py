@@ -1,5 +1,6 @@
 from models.entities.Cliente import Cliente
 from models.entities.User import User
+from models.entities.TipoServicio import TipoServicio
 
 class InMemoryDB:
     """ 
@@ -8,6 +9,7 @@ class InMemoryDB:
     _instance = None
     _users_table: dict[str, User]
     _clientes_table: dict[str, Cliente]
+    _tipoServicios_tabla: dict[str, TipoServicio]
 
     def __new__(cls):
         """
@@ -20,6 +22,8 @@ class InMemoryDB:
             # Create simulated tables
             cls._instance._users_table = {}
             cls._clientes_table = {}
+            cls._tipoServicios_tabla = {}
+            
         
         return cls._instance
 
