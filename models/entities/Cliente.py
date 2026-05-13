@@ -1,12 +1,7 @@
-""" 
-priNom: Obligatorio
-segNom: Opcional
-priApe: Obligatorio
-segApe: Opcional
-nit: Obligatorio
- """
-
 class Cliente:
+    """ 
+    Entidad que representa a un Cliente en el sistema
+    """
     _id: int = None
     _priNom: str
     _segNom: str
@@ -40,6 +35,7 @@ class Cliente:
         return self._id
     
     def getFullName(self) -> str:
+        """ Retorna el nombre completo concatenado """
         fullName:str = self._priNom
 
         if self._segNom != "":
@@ -53,5 +49,6 @@ class Cliente:
         return fullName
     
     def setId(self, id:int):
+        """ Asigna el ID solo si no ha sido asignado previamente """
         if self._id is None:
             self._id = id

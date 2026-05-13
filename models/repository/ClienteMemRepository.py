@@ -2,20 +2,32 @@ from config.MemoryDb.InMemoryDB import InMemoryDB
 from models.entities.Cliente import Cliente
 
 class ClienteMemRepository:
+    """ 
+    Repositorio para cliente
+    """
+    _db: InMemoryDB
+
     def __init__(self):
-        self.db:InMemoryDB = InMemoryDB()
+        self._db:InMemoryDB = InMemoryDB()
 
-    def add_cliente(self, cliente: Cliente):
+    def save(self, cliente: Cliente):
+        """ 
+        Método para guardar o actualizar un cliente
+        :param cliente: Cliente
         """
-        Agrega un nuevo cliente a la base de datos en memoria.
-        :param cliente: Cliente object
-        """
-        self.db.set_cliente(cliente)
+        self._db.set_cliente(cliente)
 
-    def get_cliente(self, nit: str) -> Cliente | None:
+    def find_by_nit(self, nit: str) -> Cliente:
+        """ 
+        Método para buscar un cliente por su NIT 
+        :param nit: nit string
+        :Return Cliente o None
         """
-        Obtiene un cliente por su NIT.
-        :param nit: string NIT del cliente a buscar
-         :Return Cliente object o None si no se encuentra
+        return self._db.get_cliente(nit)
+
+    def find_all(self) -> list[Cliente]:
+        """ 
+        Método para obtener todos los clientes
+        :Return list of Cliente objects
         """
-        return self.db.get_cliente(nit)
+        return self._db.get_all_clientes()
