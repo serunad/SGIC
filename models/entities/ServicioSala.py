@@ -23,8 +23,8 @@ class ServicioSala(Servicio):
         """ 
         Calcula el precio consultando al TipoServicio según el Modo de Alquiler.
         """
-        if self._modoAlquiler == ModoAlquilerEnum.DIA:
-            return self._tipoServicio.getPrecioDia()
-        elif self._modoAlquiler == ModoAlquilerEnum.HORA:
-            return self._tipoServicio.getPrecioHora()
+        if super().getModoAlquiler().value == ModoAlquilerEnum.DIA:
+            return super().getTipoServicio().getPrecioDia()
+        elif super().getModoAlquiler().value == ModoAlquilerEnum.HORA:
+            return super().getTipoServicio().getPrecioHora()
         return 0.0
