@@ -23,8 +23,10 @@ class ServicioAsesoria(Servicio):
         """ 
         Calcula el precio consultando al TipoServicio según el Modo de Alquiler.
         """
+        tipoServicio: TipoServicio = self.getTipoServicio()
+        
         if super().getModoAlquiler().value == ModoAlquilerEnum.DIA:
-            return super().getTipoServicio().getPrecioDia()
+            return tipoServicio.getPrecioDia()
         elif super().getModoAlquiler().value == ModoAlquilerEnum.HORA:
-            return super().getTipoServicio().getPrecioHora()
+            return tipoServicio.getPrecioHora()
         return 0.0
